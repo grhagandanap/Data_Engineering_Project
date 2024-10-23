@@ -1,0 +1,19 @@
+[2024-09-09T09:14:35.257+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2024-09-09T09:14:35.281+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_dag_v8.extract_api_data scheduled__2024-09-06T00:00:00+00:00 [queued]>
+[2024-09-09T09:14:35.299+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_dag_v8.extract_api_data scheduled__2024-09-06T00:00:00+00:00 [queued]>
+[2024-09-09T09:14:35.300+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 6
+[2024-09-09T09:14:35.338+0000] {taskinstance.py:2888} INFO - Executing <Task(PythonOperator): extract_api_data> on 2024-09-06 00:00:00+00:00
+[2024-09-09T09:14:35.347+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'etl_dag_v8', 'extract_api_data', 'scheduled__2024-09-06T00:00:00+00:00', '--job-id', '54', '--raw', '--subdir', 'DAGS_FOLDER/etl_dag.py', '--cfg-path', '/tmp/tmpn0f16lyn']
+[2024-09-09T09:14:35.348+0000] {standard_task_runner.py:105} INFO - Job 54: Subtask extract_api_data
+[2024-09-09T09:14:35.351+0000] {logging_mixin.py:190} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=953) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-09-09T09:14:35.351+0000] {standard_task_runner.py:72} INFO - Started process 958 to run task
+[2024-09-09T09:14:35.439+0000] {task_command.py:467} INFO - Running <TaskInstance: etl_dag_v8.extract_api_data scheduled__2024-09-06T00:00:00+00:00 [running]> on host 4118525cd54b
+[2024-09-09T09:14:35.582+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='etl_dag_v8' AIRFLOW_CTX_TASK_ID='extract_api_data' AIRFLOW_CTX_EXECUTION_DATE='2024-09-06T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-09-06T00:00:00+00:00'
+[2024-09-09T09:14:35.584+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2024-09-09T09:14:36.769+0000] {logging_mixin.py:190} INFO - It's successful!
+[2024-09-09T09:14:36.771+0000] {python.py:240} INFO - Done. Returned value was: None
+[2024-09-09T09:14:36.788+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2024-09-09T09:14:36.788+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=etl_dag_v8, task_id=extract_api_data, run_id=scheduled__2024-09-06T00:00:00+00:00, execution_date=20240906T000000, start_date=20240909T091435, end_date=20240909T091436
+[2024-09-09T09:14:36.857+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2024-09-09T09:14:36.886+0000] {taskinstance.py:3900} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-09-09T09:14:36.895+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

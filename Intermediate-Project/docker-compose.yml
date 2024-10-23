@@ -1,0 +1,20 @@
+services:
+  project-airflow:
+    image: project-airflow:latest
+    volumes:
+      - ./airflow:/opt/airflow
+      - ./shared:/shared   
+    ports:
+      - "8080:8080"
+    command: airflow standalone
+
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: first_database
+    volumes:
+      - ./shared:/shared    
+    ports:
+      - "5432:5432"

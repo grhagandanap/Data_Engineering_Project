@@ -1,0 +1,40 @@
+[2024-09-20T16:18:43.910+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2024-09-20T16:18:43.944+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_dag_v44.create_orders_table manual__2024-09-20T16:11:59.982835+00:00 [queued]>
+[2024-09-20T16:18:43.961+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_dag_v44.create_orders_table manual__2024-09-20T16:11:59.982835+00:00 [queued]>
+[2024-09-20T16:18:43.962+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 6
+[2024-09-20T16:18:43.999+0000] {taskinstance.py:2888} INFO - Executing <Task(PostgresOperator): create_orders_table> on 2024-09-20 16:11:59.982835+00:00
+[2024-09-20T16:18:44.009+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'etl_dag_v44', 'create_orders_table', 'manual__2024-09-20T16:11:59.982835+00:00', '--job-id', '1541', '--raw', '--subdir', 'DAGS_FOLDER/etl_dag.py', '--cfg-path', '/tmp/tmp7i3wjd0g']
+[2024-09-20T16:18:44.011+0000] {standard_task_runner.py:105} INFO - Job 1541: Subtask create_orders_table
+[2024-09-20T16:18:44.011+0000] {logging_mixin.py:190} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=5430) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-09-20T16:18:44.012+0000] {standard_task_runner.py:72} INFO - Started process 5435 to run task
+[2024-09-20T16:18:44.097+0000] {task_command.py:467} INFO - Running <TaskInstance: etl_dag_v44.create_orders_table manual__2024-09-20T16:11:59.982835+00:00 [running]> on host 217a74bc1b7d
+[2024-09-20T16:18:44.227+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='etl_dag_v44' AIRFLOW_CTX_TASK_ID='create_orders_table' AIRFLOW_CTX_EXECUTION_DATE='2024-09-20T16:11:59.982835+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-09-20T16:11:59.982835+00:00'
+[2024-09-20T16:18:44.229+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2024-09-20T16:18:44.240+0000] {sql.py:266} INFO - Executing: 
+            CREATE TABLE IF NOT EXISTS order_lists (
+                id VARCHAR PRIMARY KEY,
+                customer_id INT,
+                product_id INT,
+                order_date DATE,
+                quantity INT,
+                CONSTRAINT fk_product FOREIGN KEY(product_id) REFERENCES inventory(id)
+            );
+        
+[2024-09-20T16:18:44.258+0000] {base.py:84} INFO - Retrieving connection 'postgres_localhost'
+[2024-09-20T16:18:44.332+0000] {base.py:84} INFO - Retrieving connection 'postgres_localhost'
+[2024-09-20T16:18:44.352+0000] {sql.py:509} INFO - Running statement: 
+            CREATE TABLE IF NOT EXISTS order_lists (
+                id VARCHAR PRIMARY KEY,
+                customer_id INT,
+                product_id INT,
+                order_date DATE,
+                quantity INT,
+                CONSTRAINT fk_product FOREIGN KEY(product_id) REFERENCES inventory(id)
+            );
+        , parameters: None
+[2024-09-20T16:18:44.372+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2024-09-20T16:18:44.373+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=etl_dag_v44, task_id=create_orders_table, run_id=manual__2024-09-20T16:11:59.982835+00:00, execution_date=20240920T161159, start_date=20240920T161843, end_date=20240920T161844
+[2024-09-20T16:18:44.430+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2024-09-20T16:18:44.448+0000] {logging_mixin.py:190} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py:1378 AirflowProviderDeprecationWarning: Call to deprecated class PostgresOperator. (Please use `airflow.providers.common.sql.operators.sql.SQLExecuteQueryOperator`.Also, you can provide `hook_params={'schema': <database>}`.)
+[2024-09-20T16:18:44.474+0000] {taskinstance.py:3900} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-09-20T16:18:44.487+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

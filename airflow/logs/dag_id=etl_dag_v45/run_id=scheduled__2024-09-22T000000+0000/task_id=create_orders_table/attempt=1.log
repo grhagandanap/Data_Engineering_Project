@@ -1,0 +1,38 @@
+[2024-09-23T02:14:10.753+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2024-09-23T02:14:10.825+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_dag_v45.create_orders_table scheduled__2024-09-22T00:00:00+00:00 [queued]>
+[2024-09-23T02:14:10.915+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_dag_v45.create_orders_table scheduled__2024-09-22T00:00:00+00:00 [queued]>
+[2024-09-23T02:14:10.916+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 6
+[2024-09-23T02:14:11.256+0000] {taskinstance.py:2888} INFO - Executing <Task(PostgresOperator): create_orders_table> on 2024-09-22 00:00:00+00:00
+[2024-09-23T02:14:11.293+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'etl_dag_v45', 'create_orders_table', 'scheduled__2024-09-22T00:00:00+00:00', '--job-id', '1666', '--raw', '--subdir', 'DAGS_FOLDER/etl_dag.py', '--cfg-path', '/tmp/tmp35_wgugb']
+[2024-09-23T02:14:11.300+0000] {standard_task_runner.py:105} INFO - Job 1666: Subtask create_orders_table
+[2024-09-23T02:14:11.301+0000] {logging_mixin.py:190} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=9356) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-09-23T02:14:11.303+0000] {standard_task_runner.py:72} INFO - Started process 9361 to run task
+[2024-09-23T02:14:11.553+0000] {task_command.py:467} INFO - Running <TaskInstance: etl_dag_v45.create_orders_table scheduled__2024-09-22T00:00:00+00:00 [running]> on host 217a74bc1b7d
+[2024-09-23T02:14:12.390+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='etl_dag_v45' AIRFLOW_CTX_TASK_ID='create_orders_table' AIRFLOW_CTX_EXECUTION_DATE='2024-09-22T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-09-22T00:00:00+00:00'
+[2024-09-23T02:14:12.448+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2024-09-23T02:14:12.516+0000] {sql.py:266} INFO - Executing: 
+            CREATE TABLE IF NOT EXISTS orders (
+                id VARCHAR PRIMARY KEY,
+                customer_id INT,
+                product_id INT,
+                order_date DATE,
+                quantity INT
+            );
+        
+[2024-09-23T02:14:12.717+0000] {base.py:84} INFO - Retrieving connection 'postgres_localhost'
+[2024-09-23T02:14:13.807+0000] {base.py:84} INFO - Retrieving connection 'postgres_localhost'
+[2024-09-23T02:14:13.908+0000] {sql.py:509} INFO - Running statement: 
+            CREATE TABLE IF NOT EXISTS orders (
+                id VARCHAR PRIMARY KEY,
+                customer_id INT,
+                product_id INT,
+                order_date DATE,
+                quantity INT
+            );
+        , parameters: None
+[2024-09-23T02:14:14.142+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2024-09-23T02:14:14.180+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=etl_dag_v45, task_id=create_orders_table, run_id=scheduled__2024-09-22T00:00:00+00:00, execution_date=20240922T000000, start_date=20240923T021410, end_date=20240923T021414
+[2024-09-23T02:14:14.507+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2024-09-23T02:14:14.612+0000] {logging_mixin.py:190} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py:1378 AirflowProviderDeprecationWarning: Call to deprecated class PostgresOperator. (Please use `airflow.providers.common.sql.operators.sql.SQLExecuteQueryOperator`.Also, you can provide `hook_params={'schema': <database>}`.)
+[2024-09-23T02:14:15.323+0000] {taskinstance.py:3900} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-09-23T02:14:15.370+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

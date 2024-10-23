@@ -1,0 +1,20 @@
+[2024-09-20T23:16:19.491+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2024-09-20T23:16:19.535+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_dag_v45.update_inventory_data scheduled__2024-09-18T00:00:00+00:00 [queued]>
+[2024-09-20T23:16:19.566+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_dag_v45.update_inventory_data scheduled__2024-09-18T00:00:00+00:00 [queued]>
+[2024-09-20T23:16:19.569+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 6
+[2024-09-20T23:16:19.683+0000] {taskinstance.py:2888} INFO - Executing <Task(PythonOperator): update_inventory_data> on 2024-09-18 00:00:00+00:00
+[2024-09-20T23:16:19.702+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'etl_dag_v45', 'update_inventory_data', 'scheduled__2024-09-18T00:00:00+00:00', '--job-id', '1615', '--raw', '--subdir', 'DAGS_FOLDER/etl_dag.py', '--cfg-path', '/tmp/tmprxp3adyr']
+[2024-09-20T23:16:19.706+0000] {standard_task_runner.py:105} INFO - Job 1615: Subtask update_inventory_data
+[2024-09-20T23:16:19.713+0000] {logging_mixin.py:190} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=6031) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-09-20T23:16:19.714+0000] {standard_task_runner.py:72} INFO - Started process 6036 to run task
+[2024-09-20T23:16:19.876+0000] {task_command.py:467} INFO - Running <TaskInstance: etl_dag_v45.update_inventory_data scheduled__2024-09-18T00:00:00+00:00 [running]> on host 217a74bc1b7d
+[2024-09-20T23:16:20.130+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='etl_dag_v45' AIRFLOW_CTX_TASK_ID='update_inventory_data' AIRFLOW_CTX_EXECUTION_DATE='2024-09-18T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-09-18T00:00:00+00:00'
+[2024-09-20T23:16:20.132+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2024-09-20T23:16:20.442+0000] {logging_mixin.py:190} INFO - Inventory updated successfully!
+[2024-09-20T23:16:20.448+0000] {python.py:240} INFO - Done. Returned value was: None
+[2024-09-20T23:16:20.495+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2024-09-20T23:16:20.497+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=etl_dag_v45, task_id=update_inventory_data, run_id=scheduled__2024-09-18T00:00:00+00:00, execution_date=20240918T000000, start_date=20240920T231619, end_date=20240920T231620
+[2024-09-20T23:16:20.619+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2024-09-20T23:16:20.651+0000] {logging_mixin.py:190} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py:1378 AirflowProviderDeprecationWarning: Call to deprecated class PostgresOperator. (Please use `airflow.providers.common.sql.operators.sql.SQLExecuteQueryOperator`.Also, you can provide `hook_params={'schema': <database>}`.)
+[2024-09-20T23:16:20.742+0000] {taskinstance.py:3900} INFO - 2 downstream tasks scheduled from follow-on schedule check
+[2024-09-20T23:16:20.796+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

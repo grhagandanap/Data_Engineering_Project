@@ -1,0 +1,19 @@
+[2024-09-09T09:07:13.975+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2024-09-09T09:07:14.004+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_dag_v7.load_inventory_data manual__2024-09-09T09:06:28.050230+00:00 [queued]>
+[2024-09-09T09:07:14.041+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_dag_v7.load_inventory_data manual__2024-09-09T09:06:28.050230+00:00 [queued]>
+[2024-09-09T09:07:14.042+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 6
+[2024-09-09T09:07:14.088+0000] {taskinstance.py:2888} INFO - Executing <Task(PythonOperator): load_inventory_data> on 2024-09-09 09:06:28.050230+00:00
+[2024-09-09T09:07:14.101+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'etl_dag_v7', 'load_inventory_data', 'manual__2024-09-09T09:06:28.050230+00:00', '--job-id', '46', '--raw', '--subdir', 'DAGS_FOLDER/etl_dag.py', '--cfg-path', '/tmp/tmpfxnkk_kx']
+[2024-09-09T09:07:14.103+0000] {standard_task_runner.py:105} INFO - Job 46: Subtask load_inventory_data
+[2024-09-09T09:07:14.104+0000] {logging_mixin.py:190} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=849) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-09-09T09:07:14.106+0000] {standard_task_runner.py:72} INFO - Started process 854 to run task
+[2024-09-09T09:07:14.192+0000] {task_command.py:467} INFO - Running <TaskInstance: etl_dag_v7.load_inventory_data manual__2024-09-09T09:06:28.050230+00:00 [running]> on host 4118525cd54b
+[2024-09-09T09:07:14.331+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='etl_dag_v7' AIRFLOW_CTX_TASK_ID='load_inventory_data' AIRFLOW_CTX_EXECUTION_DATE='2024-09-09T09:06:28.050230+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-09-09T09:06:28.050230+00:00'
+[2024-09-09T09:07:14.333+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2024-09-09T09:07:14.356+0000] {logging_mixin.py:190} INFO - Inventory data processing complete!
+[2024-09-09T09:07:14.357+0000] {python.py:240} INFO - Done. Returned value was: None
+[2024-09-09T09:07:14.401+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2024-09-09T09:07:14.402+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=etl_dag_v7, task_id=load_inventory_data, run_id=manual__2024-09-09T09:06:28.050230+00:00, execution_date=20240909T090628, start_date=20240909T090714, end_date=20240909T090714
+[2024-09-09T09:07:14.484+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2024-09-09T09:07:14.598+0000] {taskinstance.py:3900} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-09-09T09:07:14.602+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

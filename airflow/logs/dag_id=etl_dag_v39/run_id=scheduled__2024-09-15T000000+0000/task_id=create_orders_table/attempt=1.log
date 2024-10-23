@@ -1,0 +1,40 @@
+[2024-09-20T07:34:57.299+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2024-09-20T07:34:57.328+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_dag_v39.create_orders_table scheduled__2024-09-15T00:00:00+00:00 [queued]>
+[2024-09-20T07:34:57.344+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_dag_v39.create_orders_table scheduled__2024-09-15T00:00:00+00:00 [queued]>
+[2024-09-20T07:34:57.344+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 6
+[2024-09-20T07:34:57.382+0000] {taskinstance.py:2888} INFO - Executing <Task(PostgresOperator): create_orders_table> on 2024-09-15 00:00:00+00:00
+[2024-09-20T07:34:57.394+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'etl_dag_v39', 'create_orders_table', 'scheduled__2024-09-15T00:00:00+00:00', '--job-id', '1052', '--raw', '--subdir', 'DAGS_FOLDER/etl_dag.py', '--cfg-path', '/tmp/tmp7wvqfh9_']
+[2024-09-20T07:34:57.396+0000] {standard_task_runner.py:105} INFO - Job 1052: Subtask create_orders_table
+[2024-09-20T07:34:57.398+0000] {logging_mixin.py:190} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=609) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-09-20T07:34:57.399+0000] {standard_task_runner.py:72} INFO - Started process 614 to run task
+[2024-09-20T07:34:57.475+0000] {task_command.py:467} INFO - Running <TaskInstance: etl_dag_v39.create_orders_table scheduled__2024-09-15T00:00:00+00:00 [running]> on host 217a74bc1b7d
+[2024-09-20T07:34:57.729+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='etl_dag_v39' AIRFLOW_CTX_TASK_ID='create_orders_table' AIRFLOW_CTX_EXECUTION_DATE='2024-09-15T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-09-15T00:00:00+00:00'
+[2024-09-20T07:34:57.731+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2024-09-20T07:34:57.750+0000] {sql.py:266} INFO - Executing: 
+            CREATE TABLE IF NOT EXISTS order_lists (
+                id VARCHAR PRIMARY KEY,
+                customer_id INT,
+                product_id INT,
+                order_date DATE,
+                quantity INT,
+                CONSTRAINT fk_product FOREIGN KEY(product_id) REFERENCES inventory(id)
+            );
+        
+[2024-09-20T07:34:57.766+0000] {base.py:84} INFO - Retrieving connection 'postgres_localhost'
+[2024-09-20T07:34:57.993+0000] {base.py:84} INFO - Retrieving connection 'postgres_localhost'
+[2024-09-20T07:34:58.070+0000] {sql.py:509} INFO - Running statement: 
+            CREATE TABLE IF NOT EXISTS order_lists (
+                id VARCHAR PRIMARY KEY,
+                customer_id INT,
+                product_id INT,
+                order_date DATE,
+                quantity INT,
+                CONSTRAINT fk_product FOREIGN KEY(product_id) REFERENCES inventory(id)
+            );
+        , parameters: None
+[2024-09-20T07:34:58.124+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2024-09-20T07:34:58.127+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=etl_dag_v39, task_id=create_orders_table, run_id=scheduled__2024-09-15T00:00:00+00:00, execution_date=20240915T000000, start_date=20240920T073457, end_date=20240920T073458
+[2024-09-20T07:34:58.268+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2024-09-20T07:34:58.286+0000] {logging_mixin.py:190} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py:1378 AirflowProviderDeprecationWarning: Call to deprecated class PostgresOperator. (Please use `airflow.providers.common.sql.operators.sql.SQLExecuteQueryOperator`.Also, you can provide `hook_params={'schema': <database>}`.)
+[2024-09-20T07:34:58.335+0000] {taskinstance.py:3900} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-09-20T07:34:58.354+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

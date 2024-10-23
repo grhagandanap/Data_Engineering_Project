@@ -1,0 +1,32 @@
+[2024-09-12T10:35:05.289+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2024-09-12T10:35:05.311+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_dag_v32.insert_inventory_data scheduled__2024-09-10T00:00:00+00:00 [queued]>
+[2024-09-12T10:35:05.325+0000] {taskinstance.py:2612} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_dag_v32.insert_inventory_data scheduled__2024-09-10T00:00:00+00:00 [queued]>
+[2024-09-12T10:35:05.326+0000] {taskinstance.py:2865} INFO - Starting attempt 1 of 6
+[2024-09-12T10:35:05.359+0000] {taskinstance.py:2888} INFO - Executing <Task(PostgresOperator): insert_inventory_data> on 2024-09-10 00:00:00+00:00
+[2024-09-12T10:35:05.368+0000] {standard_task_runner.py:104} INFO - Running: ['airflow', 'tasks', 'run', 'etl_dag_v32', 'insert_inventory_data', 'scheduled__2024-09-10T00:00:00+00:00', '--job-id', '816', '--raw', '--subdir', 'DAGS_FOLDER/etl_dag.py', '--cfg-path', '/tmp/tmpof42pwi2']
+[2024-09-12T10:35:05.370+0000] {standard_task_runner.py:105} INFO - Job 816: Subtask insert_inventory_data
+[2024-09-12T10:35:05.373+0000] {logging_mixin.py:190} WARNING - /home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=4774) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2024-09-12T10:35:05.374+0000] {standard_task_runner.py:72} INFO - Started process 4779 to run task
+[2024-09-12T10:35:05.445+0000] {task_command.py:467} INFO - Running <TaskInstance: etl_dag_v32.insert_inventory_data scheduled__2024-09-10T00:00:00+00:00 [running]> on host 72ac4976c45d
+[2024-09-12T10:35:05.556+0000] {taskinstance.py:3131} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='airflow' AIRFLOW_CTX_DAG_ID='etl_dag_v32' AIRFLOW_CTX_TASK_ID='insert_inventory_data' AIRFLOW_CTX_EXECUTION_DATE='2024-09-10T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2024-09-10T00:00:00+00:00'
+[2024-09-12T10:35:05.557+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2024-09-12T10:35:05.569+0000] {sql.py:266} INFO - Executing: 
+            TRUNCATE TABLE inventory;
+            COPY inventory(id, name, stock_quantity, price)
+            FROM '/shared/inventory.csv'
+            DELIMITER ',' CSV HEADER;
+        
+[2024-09-12T10:35:05.583+0000] {base.py:84} INFO - Retrieving connection 'postgres_localhost'
+[2024-09-12T10:35:05.657+0000] {base.py:84} INFO - Retrieving connection 'postgres_localhost'
+[2024-09-12T10:35:05.673+0000] {sql.py:509} INFO - Running statement: 
+            TRUNCATE TABLE inventory;
+            COPY inventory(id, name, stock_quantity, price)
+            FROM '/shared/inventory.csv'
+            DELIMITER ',' CSV HEADER;
+        , parameters: None
+[2024-09-12T10:35:05.688+0000] {sql.py:518} INFO - Rows affected: 500
+[2024-09-12T10:35:05.702+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2024-09-12T10:35:05.702+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=etl_dag_v32, task_id=insert_inventory_data, run_id=scheduled__2024-09-10T00:00:00+00:00, execution_date=20240910T000000, start_date=20240912T103505, end_date=20240912T103505
+[2024-09-12T10:35:05.751+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2024-09-12T10:35:05.771+0000] {taskinstance.py:3900} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-09-12T10:35:05.773+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
